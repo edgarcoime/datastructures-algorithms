@@ -1,15 +1,12 @@
 package main
 
 func containsDuplicate(nums []int) bool {
-	memo := make(map[int]int)
-
-	// Create a map thats stores nums inside
-	for i := 0; i < len(nums); i++ {
-		_, ok := memo[nums[i]]
-		if ok == true {
-			return true
+	nums_map := map[int]int{}
+	for _, n := range nums {
+		if _, ok := nums_map[n]; !ok {
+			nums_map[n] = 1
 		} else {
-			memo[nums[i]] = nums[i]
+			return true
 		}
 	}
 
