@@ -72,7 +72,9 @@ func appendToFile(fileName string, info string) {
 	}
 }
 
+const FILE_NAME = "_test.data.txt"
+
 func main() {
-	writeToFile("data.txt")
-	appendToFile("data.txt", "13")
+	writeToFile(FILE_NAME)
+	appendToFile(FILE_NAME, "13")
 }
