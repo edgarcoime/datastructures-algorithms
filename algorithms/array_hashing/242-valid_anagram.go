@@ -1,5 +1,7 @@
 package main
 
+// Time Complexity: O(s+t)
+// Memory Complexity: O(s+t)
 // Works for Unicode
 func isAnagram(s string, t string) bool {
 	if len(s) != len(t) {
@@ -27,6 +29,11 @@ func isAnagram(s string, t string) bool {
 
 	return true
 }
+
+// Follow up question
+// How to solve with O(1) space?
+//   - Sort the string first
+//   - use two pointers to compare the two strings
 
 func main() {
 	// t := "anagram"
