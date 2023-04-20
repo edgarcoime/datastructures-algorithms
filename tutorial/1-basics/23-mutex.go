@@ -6,6 +6,11 @@ import (
 	"time"
 )
 
+// Using locks to protect data from being
+// accessed by more than one user at a time
+// Locks are another option when you don't
+// have to pass dat
+
 type Account struct {
 	balance int
 	lock    sync.Mutex
