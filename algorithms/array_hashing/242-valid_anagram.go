@@ -30,6 +30,29 @@ func isAnagram(s string, t string) bool {
 	return true
 }
 
+// Assuming all lower
+func isAnagram2(s string, t string) bool {
+	if len(s) != len(t) {
+		return false
+	}
+
+	comparator := make([]int, 26) // 26 chars assyming all lower case
+	// evaluate chars
+	for i := 0; i < len(s); i++ {
+		comparator[s[i]-'a']++
+		comparator[t[i]-'a']--
+	}
+
+	// Check if 0s
+	for _, n := range comparator {
+		if n != 0 {
+			return false
+		}
+	}
+
+	return true
+}
+
 // Follow up question
 // How to solve with O(1) space?
 //   - Sort the string first
@@ -38,7 +61,11 @@ func isAnagram(s string, t string) bool {
 func main() {
 	// t := "anagram"
 	// s := "nagaram"
-	t := "rat"
+	// t := "rat"
+	// s := "car"
+	t := "rac"
 	s := "car"
-	println(isAnagram(s, t))
+	// println(isAnagram(s, t))
+	println(isAnagram2(s, t))
+	// println('z' - 'a')
 }
