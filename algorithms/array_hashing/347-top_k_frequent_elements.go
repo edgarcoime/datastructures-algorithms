@@ -1,7 +1,7 @@
 package main
 
 // TC: O(n) - iterating only once through the nums arr
-// SC: O(2m) - Create a freq arr and count map
+// SC: O(2n) - Create a freq arr and count map
 func topKFrequent(nums []int, k int) []int {
 	count := make(map[int]int)
 	freq := make([][]int, len(nums)+1)
