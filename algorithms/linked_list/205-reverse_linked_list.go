@@ -69,7 +69,7 @@ func reverseListRecursive(head *ListNode) *ListNode {
 	reversedListHead := reverseListRecursive(head.Next)
 
 	// Operate on current stack frame
-	head.Next.Next = head
+	head.Next.Next = head // Creating cyclic reference
 	head.Next = nil
 	return reversedListHead
 }
@@ -82,6 +82,6 @@ func main() {
 	h := createLL([]int{1, 2, 3})
 	// h := createLL([]int{1, 2, 3, 4, 5})
 	// h := createLL([]int{1, 2, 3, 4, 5})
-	// println(reverseListRecursive(h))
+	println(reverseListRecursive(h))
 	printLL(h)
 }

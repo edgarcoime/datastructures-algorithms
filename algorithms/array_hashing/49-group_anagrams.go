@@ -5,6 +5,38 @@ import (
 	"strings"
 )
 
+// 2023-04-26
+// TC: O(m*n*26)
+// 		- m: length of strs array
+// 		- n: average length of string in arr
+// 		- 26: Array size for key
+// SC: O(n*26) - Create a cache and create an integer array size 26 to store as key
+
+func generateAnagramID(s string) [26]int {
+	var key [26]int
+	for i := 0; i < len(s); i++ {
+		key[s[i]-'a']++
+	}
+	return key
+}
+
+func groupAnagrams2(strs []string) [][]string {
+	// Cache anagrams together
+	cache := make(map[[26]int][]string)
+	for _, s := range strs {
+		k := generateAnagramID(s)
+		cache[k] = append(cache[k], s)
+	}
+
+	// Collect anagrams
+	res := [][]string{}
+	for _, anagrams := range cache {
+		res = append(res, anagrams)
+	}
+
+	return res
+}
+
 // TC: O(nlogn) - sorting algorithm uses quicksort BEST:nlogn WORST: n^2
 // SC: O(logn) - call stack space complexity BEST: logn WORST: O(n)
 func sortString(s string) string {
@@ -36,43 +68,8 @@ func groupAnagrams(strs []string) [][]string {
 	return out
 }
 
-// TODO: Create a better hashing function that is at at most O(n)
-func generateID(s string) byte {
-	// id := 0
-	var id byte
-	id = 0
-	for i := 0; i < len(s); i++ {
-		id += s[i] - 'a'
-	}
-	return id
-}
-
-func groupAnagrams2(strs []string) [][]string {
-	strMap := make(map[byte][]string)
-
-	for _, str := range strs {
-		id := generateID(str)
-		if _, ok := strMap[id]; !ok {
-			strMap[id] = []string{}
-		}
-		strMap[id] = append(strMap[id], str)
-	}
-
-	out := make([][]string, len(strMap))
-	i := 0
-	for _, anagrams := range strMap {
-		out[i] = anagrams
-		i++
-	}
-
-	return out
-}
-
 func main() {
 	// strs := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
 	strs := []string{"ac", "c"}
 	println(groupAnagrams(strs))
-	println(generateID("car"))
-	println(generateID("rac"))
-	println(generateID("rat"))
 }
