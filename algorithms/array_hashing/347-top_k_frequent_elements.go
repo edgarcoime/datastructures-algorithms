@@ -1,7 +1,12 @@
 package main
 
-// TC: O(n) - iterating only once through the nums arr
-// SC: O(2n) - Create a freq arr and count map
+// 2023-04-26
+// TC: O(n)
+//   - Iterate through the array only once,
+//     even though result is nested for the only operation
+//     we are operating on is when we hit an input element
+//
+// SC: O(n)
 func topKFrequent(nums []int, k int) []int {
 	count := make(map[int]int)
 	freq := make([][]int, len(nums)+1)
