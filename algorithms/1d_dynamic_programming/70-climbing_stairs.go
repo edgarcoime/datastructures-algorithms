@@ -14,6 +14,9 @@ func climbStairsIt(n int) int {
 	return one
 }
 
+// 2023-04-27
+// TC: O(n) - Call stack climb stairs will be called n times to reach base case
+// SC: O(n) - Map can store n key value pairs
 func climbStairs(n int) int {
 	memo := make(map[int]int)
 	return _helper(n, memo)
