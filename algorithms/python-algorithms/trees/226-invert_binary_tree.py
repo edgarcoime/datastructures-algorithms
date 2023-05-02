@@ -8,6 +8,9 @@ class TreeNode:
         self.right = right
 
 
+# 2023-05-01
+# TC: O(n) - Iterate through all nodes to invert tree
+# SC: O(n) - Stack frame calls would potentially be the length of n
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if not root:
