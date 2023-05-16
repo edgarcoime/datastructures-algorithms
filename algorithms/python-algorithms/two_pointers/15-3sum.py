@@ -31,6 +31,38 @@ class Solution:
         return result
 
 
+# 2023-05-15
+# TC: O(nlogn) + O(n^2) - sorting func + nested loop in solving twosum II
+# SC: O(1) or O(n) - depending on sorting algorithm in library
+class Solution2:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        res = []
+
+        for i, n in enumerate(nums):
+            # Base case; since sorted if greater than 0 then impossible to equal 0
+            if n > 0:
+                break
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+
+            l, r = i + 1, len(nums) - 1
+            while l < r:  # find the complement of n (0 - n)
+                if nums[l] + nums[r] < 0 - n:
+                    l += 1
+                elif nums[l] + nums[r] > 0 - n:
+                    r -= 1
+                else:
+                    res.append([n, nums[l], nums[r]])
+                    l += 1
+                    r -= 1
+
+                    while l < r and nums[l] == nums[l - 1]:
+                        l += 1
+
+        return res
+
+
 def main():
     pass
 
